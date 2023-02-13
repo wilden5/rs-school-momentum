@@ -1,0 +1,89 @@
+@font-face {
+    font-family: 'Arial-MT';
+    src: url("../assets/fonts/Arial-MT.woff");
+}
+
+html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    color: #fff;
+}
+
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time {
+    min-height: 124px;
+    margin-bottom: 10px;
+    font-family: 'Arial-MT', serif;
+    font-size: 100px;
+    letter-spacing: -4px;
+}
+
+.date {
+    min-height: 28px;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* greeting styles starts */
+
+.greeting {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    align-items: center;
+    min-height: 48px;
+    width: 100vw;
+    font-size: 40px;
+}
+
+.greeting__message {
+    flex: 1;
+    padding: 10px;
+    text-align: right;
+}
+
+.greeting__name {
+    flex: 1;
+    max-width: 50%;
+    padding: 10px;
+    font-size: 40px;
+    text-align: left;
+    color: #fff;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+}
+
+.name::placeholder {
+    color: #fff;
+    opacity: .6;
+}
+
+/* greeting styles ends */
+
+/* media styles starts */
+
+@media screen and (max-width: 768px) {
+    .time {
+        min-height: 80px;
+        font-size: 72px;
+    }
+
+    .greeting__name {
+        font-size: 32px;
+        padding: 5px;
+    }
+}
+
+/* media styles ends */
