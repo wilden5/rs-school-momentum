@@ -3,7 +3,7 @@
     src: url("../assets/fonts/Arial-MT.woff");
 }
 
-html {
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -11,14 +11,27 @@ html {
 
 body {
     background-color: black;
+    min-width: 480px;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
     color: #fff;
+    text-align: center;
+    /*background: url("../assets/img/bg.jpg") center/cover, rgba(0, 0, 0, 0.5);
+    background-blend-mode: multiply;
+    transition: background-image 1s ease-in-out;*/
 }
 
 .main {
-    width: 100%;
+    position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 40vh;
+    min-height: 260px;
+    padding: 20px;
 }
 
 .time {
@@ -65,7 +78,7 @@ body {
     outline: 0;
 }
 
-.name::placeholder {
+.greeting__name::placeholder {
     color: #fff;
     opacity: .6;
 }
@@ -78,6 +91,15 @@ body {
     .time {
         min-height: 80px;
         font-size: 72px;
+    }
+
+    .greeting {
+        min-height: 40px;
+        font-size: 32px;
+    }
+
+    .greeting__message {
+        padding: 5px;
     }
 
     .greeting__name {
