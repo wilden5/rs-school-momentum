@@ -20,18 +20,18 @@ function getTimeOfDay() {
     const currentHour = date.getHours();
     switch (true) {
         case (currentHour >= 6 && currentHour <= 11):
-            return 'Good morning';
+            return 'morning';
         case (currentHour >= 12 && currentHour <= 17):
-            return 'Good afternoon';
+            return 'afternoon';
         case (currentHour >= 18 && currentHour <= 23):
-            return 'Good evening';
+            return 'evening';
         case (currentHour >= 0 && currentHour <= 5):
-            return 'Good night';
+            return 'night';
     }
 }
 
 function showGreeting() {
-    greetingMessage.textContent = getTimeOfDay();
+    greetingMessage.textContent = `Good ${getTimeOfDay()}`;
 }
 
 showGreeting();
