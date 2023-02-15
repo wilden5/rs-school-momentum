@@ -6,11 +6,22 @@
 		  name="viewport">
 	<meta content="ie=edge" http-equiv="X-UA-Compatible">
 	<title>Wilden's Momentum</title>
+	<link href="./css/owfont-regular.css" rel="stylesheet">
 	<link href="./css/style.css" rel="stylesheet">
 </head>
 <body>
 <header class="header">
-
+	<div class="weather">
+		<input class="weather__city-input" type="text">
+		<i class="weather__icon owf owf-804"></i>
+		<div class="weather__error"></div>
+		<div class="weather__info-container">
+			<span class="weather__temperature"></span>
+			<span class="weather__description"></span>
+		</div>
+		<div class="weather__wind"></div>
+		<div class="weather__humidity"></div>
+	</div>
 </header>
 <main class="main">
 	<div class="slider">
@@ -30,5 +41,6 @@
 <script src="./js/date.js"></script>
 <script src="./js/greeting.js"></script>
 <script src="./js/slider.js"></script>
+<script src="./js/weather.js"></script>
 </body>
 </html>
