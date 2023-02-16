@@ -104,7 +104,8 @@ body {
     background-image: url("../assets/svg/slider-next.svg");
 }
 
-.slider__icon {
+.slider__icon,
+.footer__quote-button {
     width: 32px;
     height: 32px;
     background-size: 32px 32px;
@@ -118,11 +119,13 @@ body {
     transition: .3s;
 }
 
-.slider__icon:hover {
+.slider__icon:hover,
+.footer__quote-button:hover {
     opacity: 1;
 }
 
-.slider__icon:active {
+.slider__icon:active,
+.footer__quote-button:active {
     border: 0;
     outline: 0;
     transform: scale(1.1);
@@ -181,6 +184,29 @@ body {
     column-gap: 12px;
 }
 
+.footer__quote-button {
+    margin-bottom: 30px;
+    background-image: url("../assets/svg/reload.svg");
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 30vh;
+    min-height: 160px;
+    padding: 20px;
+}
+
+.footer__quote {
+    min-height: 32px;
+}
+
+.footer__quote-author {
+    min-height: 20px;
+}
 
 /* media styles starts */
 
