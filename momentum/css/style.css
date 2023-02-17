@@ -217,8 +217,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 120px;
-    margin-bottom: 28px;
+    width: 150px;
+    margin-bottom: 10px;
 }
 
 .player__play-prev {
@@ -234,6 +234,10 @@ body {
 
 .player__play-next {
     background-image: url("../assets/svg/play-next.svg");
+}
+
+.player__mute-sound {
+    background-image: url("../assets/svg/mute-svgrepo-com.svg");
 }
 
 .player__playlist {
@@ -270,6 +274,39 @@ body {
 }
 
 /* player styles ends */
+
+/* advance player styles starts */
+
+.player__progress-container {
+    border-radius: 5px;
+    width: 100%;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: solid red;
+    visibility: hidden;
+}
+
+.player__progress-bar {
+    background: white;
+    border-radius: 5px;
+    height: 6px;
+    /* width: 150px;*/
+}
+
+.player__track-name {
+    float: left;
+    display: inline-block;
+    font-size: 10px;
+}
+
+.player__track-status {
+    float: right;
+    font-size: 10px;
+}
+
+/* advance player styles ends */
 
 /* media styles starts */
 

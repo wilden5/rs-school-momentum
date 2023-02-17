@@ -16,9 +16,20 @@
 			<button class="player__play-prev player-icon"></button>
 			<button class="player__play player-icon"></button>
 			<button class="player__play-next player-icon"></button>
+			<button class="player__mute-sound player-icon"></button>
 		</div>
-		<ul class="player__playlist">
-		</ul>
+		<div class="player__change-volume">
+			<p class="change-volume__current-volume">Volume: 50</p>
+			<input class="change-volume__slider" max="100" min="0" type="range" value="50">
+		</div>
+		<div class="player__track-details">
+			<span class="player__track-name"></span>
+			<span class="player__track-status"></span>
+		</div>
+		<div class="player__progress-container">
+			<div class="player__progress-bar"></div>
+		</div>
+		<ul class="player__playlist"></ul>
 	</div>
 	<div class="weather">
 		<input class="weather__city-input" type="text">

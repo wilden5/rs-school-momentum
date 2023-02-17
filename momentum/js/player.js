@@ -25,6 +25,13 @@ const play = document.querySelector('.player__play');
 const playPrev = document.querySelector('.player__play-prev');
 const playNext = document.querySelector('.player__play-next');
 const playerPlaylist = document.querySelector('.player__playlist');
+const playerProgressContainer = document.querySelector('.player__progress-container');
+const playerProgressBar = document.querySelector('.player__progress-bar');
+const trackName = document.querySelector('.player__track-name');
+const playerTrackStatus = document.querySelector('.player__track-status');
+const muteButton = document.querySelector('.player__mute-sound');
+const currentVolume = document.querySelector('.change-volume__current-volume');
+const changeVolumeSlider = document.querySelector('.change-volume__slider');
 let playNum = 0;
 
 playList.forEach(element => {
@@ -39,6 +46,8 @@ function playAudio() {
     audio.currentTime = 0;
     audio.play();
     highlightTrackItem();
+    trackName.textContent = document.querySelector('.item-active').textContent;
+    playerProgressContainer.style.visibility = 'visible';
 }
 
 audio.addEventListener('ended', () => {
@@ -92,3 +101,32 @@ function highlightTrackItem() {
         }
     })
 }
+
+function updateProgress(event) {
+    const {duration, currentTime} = event.srcElement;
+    const progressStatus = (currentTime / duration) * 100;
+    playerProgressBar.style.width = `${progressStatus}%`;
+    playerTrackStatus.innerHTML =
+        '00:' + currentTime.toFixed(0).padStart(2, '0') + ' / ' + '00:' + duration.toFixed(0);
+}
+
+audio.addEventListener('timeupdate', updateProgress);
+
+function setProgress(event) {
+    const width = this.clientWidth;
+    const clickX = event.offsetX;
+    const duration = audio.duration;
+    audio.currentTime = (clickX / width) * duration;
+}
+
+playerProgressContainer.addEventListener('click', setProgress);
+muteButton.addEventListener('click', () => {
+    audio.muted = !audio.muted;
+})
+
+function changeVolume() {
+    currentVolume.textContent = 'Volume: ' + changeVolumeSlider.value;
+    audio.volume = changeVolumeSlider.value / 100;
+}
+
+changeVolumeSlider.addEventListener('change', changeVolume)
