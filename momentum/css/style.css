@@ -265,6 +265,18 @@ body {
     font-weight: 900;
 }
 
+.playlist__item::after {
+    content: "\25B6";
+    position: absolute;
+    right: 0;
+    top: 2px;
+    font-weight: 900;
+}
+
+.item-active::after {
+    content: "\23F8";
+}
+
 .item-active::before {
     color: #C5B358;
 }

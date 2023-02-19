@@ -130,3 +130,47 @@ function changeVolume() {
 }
 
 changeVolumeSlider.addEventListener('change', changeVolume)
+
+document.querySelectorAll('.playlist__item').forEach((item, index) => {
+    item.classList.add('i' + index.toString());
+})
+
+document.querySelector('.i0').addEventListener('click', function () {
+    playNum = 0;
+    if (this.classList.contains('item-active')) {
+        this.classList.remove('item-active');
+        audio.pause();
+    } else {
+        playAudio();
+    }
+})
+
+document.querySelector('.i1').addEventListener('click', function () {
+    playNum = 1;
+    if (this.classList.contains('item-active')) {
+        this.classList.remove('item-active');
+        audio.pause();
+    } else {
+        playAudio();
+    }
+})
+
+document.querySelector('.i2').addEventListener('click', function () {
+    playNum = 2;
+    if (this.classList.contains('item-active')) {
+        this.classList.remove('item-active');
+        audio.pause();
+    } else {
+        playAudio();
+    }
+})
+
+document.querySelector('.i3').addEventListener('click', function () {
+    playNum = 3;
+    if (this.classList.contains('item-active')) {
+        this.classList.remove('item-active');
+        audio.pause();
+    } else {
+        playAudio();
+    }
+})
