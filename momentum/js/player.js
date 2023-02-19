@@ -56,6 +56,9 @@ audio.addEventListener('ended', () => {
 
 play.addEventListener('click', () => {
     play.classList.toggle('pause');
+    document.querySelectorAll('.playlist__item').forEach((item) => {
+        item.classList.remove('item-active')
+    })
     if (play.classList.contains('pause')) {
         playAudio();
     } else {
@@ -136,6 +139,7 @@ document.querySelectorAll('.playlist__item').forEach((item, index) => {
 })
 
 document.querySelector('.i0').addEventListener('click', function () {
+    play.classList.toggle('pause');
     playNum = 0;
     if (this.classList.contains('item-active')) {
         this.classList.remove('item-active');
@@ -146,6 +150,7 @@ document.querySelector('.i0').addEventListener('click', function () {
 })
 
 document.querySelector('.i1').addEventListener('click', function () {
+    play.classList.toggle('pause');
     playNum = 1;
     if (this.classList.contains('item-active')) {
         this.classList.remove('item-active');
@@ -156,6 +161,7 @@ document.querySelector('.i1').addEventListener('click', function () {
 })
 
 document.querySelector('.i2').addEventListener('click', function () {
+    play.classList.toggle('pause');
     playNum = 2;
     if (this.classList.contains('item-active')) {
         this.classList.remove('item-active');
@@ -166,6 +172,7 @@ document.querySelector('.i2').addEventListener('click', function () {
 })
 
 document.querySelector('.i3').addEventListener('click', function () {
+    play.classList.toggle('pause');
     playNum = 3;
     if (this.classList.contains('item-active')) {
         this.classList.remove('item-active');
