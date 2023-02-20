@@ -24,11 +24,11 @@ function getTimeOfDay(lang) {
     const currentHour = date.getHours();
     switch (true) {
         case (currentHour >= 6 && currentHour <= 11):
-            return 'morning';
+            return lang === 'ru' ? greetingTranslation.ruMorning : 'morning';
         case (currentHour >= 12 && currentHour <= 17):
-            return 'afternoon';
+            return lang === 'ru' ? greetingTranslation.ruAfternoon : 'afternoon';
         case (currentHour >= 18 && currentHour <= 23):
-            return 'evening';
+            return lang === 'ru' ? greetingTranslation.ruEvening : 'evening';
         case (currentHour >= 0 && currentHour <= 5):
             return lang === 'ru' ? greetingTranslation.ruNight : 'night';
     }

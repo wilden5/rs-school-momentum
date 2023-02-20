@@ -34,6 +34,8 @@ const currentVolume = document.querySelector('.change-volume__current-volume');
 const changeVolumeSlider = document.querySelector('.change-volume__slider');
 let playNum = 0;
 
+let lang = 'en';
+
 playList.forEach(element => {
     const li = document.createElement('li');
     li.classList.add('playlist__item');
@@ -128,8 +130,13 @@ muteButton.addEventListener('click', () => {
 })
 
 function changeVolume() {
-    currentVolume.textContent = 'Volume: ' + changeVolumeSlider.value;
-    audio.volume = changeVolumeSlider.value / 100;
+    if (lang === 'en') {
+        currentVolume.textContent = 'Volume: ' + changeVolumeSlider.value;
+        audio.volume = changeVolumeSlider.value / 100;
+    } else {
+        currentVolume.textContent = 'Громкость: ' + changeVolumeSlider.value;
+        audio.volume = changeVolumeSlider.value / 100;
+    }
 }
 
 changeVolumeSlider.addEventListener('change', changeVolume)
@@ -180,4 +187,14 @@ document.querySelector('.i3').addEventListener('click', function () {
     } else {
         playAudio();
     }
+})
+
+document.querySelector('.languages__ru').addEventListener('click', function () {
+    lang = 'ru';
+    currentVolume.textContent = 'Громкость: ' + changeVolumeSlider.value;
+})
+
+document.querySelector('.languages__en').addEventListener('click', function () {
+    lang = 'en';
+    currentVolume.textContent = 'Volume: ' + changeVolumeSlider.value;
 })
