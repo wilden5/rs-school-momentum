@@ -2,6 +2,8 @@ const quote = document.querySelector('.footer__quote');
 const quoteAuthor = document.querySelector('.footer__quote-author');
 const quoteButton = document.querySelector('.footer__quote-button');
 
+let langQuote = 'en';
+
 const list = [
     {
         id: 0,
@@ -51,12 +53,20 @@ function getQuote(lang) {
 
 getQuote('en');
 
-quoteButton.addEventListener('click', getQuote);
+quoteButton.addEventListener('click', () => {
+    if (langQuote === 'ru') {
+        getQuote('ru');
+    } else {
+        getQuote('en');
+    }
+});
 
 document.querySelector('.languages__ru').addEventListener('click', function () {
+    langQuote = 'ru';
     getQuote('ru');
 })
 
 document.querySelector('.languages__en').addEventListener('click', function () {
+    langQuote = 'en';
     getQuote('en');
 })
