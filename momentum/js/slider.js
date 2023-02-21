@@ -4,9 +4,13 @@ const sliderPrev = document.querySelector('.slider__prev');
 const unsplashButton = document.querySelector('.background-apis__unsplash');
 const flickrButton = document.querySelector('.background-apis__flickr');
 const defaultButton = document.querySelector('.background-apis__default');
+const unsplashInput = document.querySelector('.unsplash-custom-tag');
+const flickrInput = document.querySelector('.flickr-custom-tag');
 
 let backgroundNum = String(getRandomNum(21)).padStart(2, '0');
 let backgroundType = 'default';
+let isCustomBackgroundFlicker = false;
+let isCustomBackgroundUnsplash = false;
 
 function getRandomNum(max) {
     const number = Math.floor(Math.random() * max);
@@ -59,7 +63,12 @@ setBackground();
 
 function getNextSlide() {
     if (backgroundType === 'flickr') {
-        const timeOfDay = getTimeOfDay();
+        let timeOfDay;
+        if (isCustomBackgroundFlicker) {
+            timeOfDay = flickrInput.value;
+        } else {
+            timeOfDay = getTimeOfDay();
+        }
         const url =
             `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=5024ee7beafef05ca48da43511f38a47&tags=${timeOfDay}&extras=url_h&format=json&nojsoncallback=1`;
         fetch(url)
@@ -76,6 +85,24 @@ function getNextSlide() {
                         });
                 }
             })
+    } else if (backgroundType === 'unsplash') {
+        let timeOfDay;
+        if (isCustomBackgroundUnsplash) {
+            timeOfDay = unsplashInput.value;
+        } else {
+            timeOfDay = getTimeOfDay();
+        }
+        const url =
+            `https://api.unsplash.com/photos/random?orientation=landscape&query=${timeOfDay}&client_id=_zCHBz7_qIq_K4W1f_mn9DEIujLxKXejIUlFU7zwFvA`;
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                const img = new Image();
+                img.src = data.urls.regular;
+                img.onload = () => {
+                    body.style.backgroundImage = `url(${img.src})`;
+                }
+            });
     } else {
         if (Number(backgroundNum) + 1 > 20) {
             backgroundNum = '01';
@@ -88,7 +115,12 @@ function getNextSlide() {
 
 function getPreviousSlide() {
     if (backgroundType === 'flickr') {
-        const timeOfDay = getTimeOfDay();
+        let timeOfDay;
+        if (isCustomBackgroundFlicker) {
+            timeOfDay = flickrInput.value;
+        } else {
+            timeOfDay = getTimeOfDay();
+        }
         const url =
             `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=5024ee7beafef05ca48da43511f38a47&tags=${timeOfDay}&extras=url_h&format=json&nojsoncallback=1`;
         fetch(url)
@@ -105,6 +137,24 @@ function getPreviousSlide() {
                         });
                 }
             })
+    } else if (backgroundType === 'unsplash') {
+        let timeOfDay;
+        if (isCustomBackgroundUnsplash) {
+            timeOfDay = unsplashInput.value;
+        } else {
+            timeOfDay = getTimeOfDay();
+        }
+        const url =
+            `https://api.unsplash.com/photos/random?orientation=landscape&query=${timeOfDay}&client_id=_zCHBz7_qIq_K4W1f_mn9DEIujLxKXejIUlFU7zwFvA`;
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                const img = new Image();
+                img.src = data.urls.regular;
+                img.onload = () => {
+                    body.style.backgroundImage = `url(${img.src})`;
+                }
+            });
     } else {
         if (Number(backgroundNum) - 1 === 0) {
             backgroundNum = '20';
@@ -123,6 +173,7 @@ unsplashButton.addEventListener('click', () => {
 });
 
 flickrButton.addEventListener('click', () => {
+    isCustomBackgroundFlicker = false;
     backgroundType = 'flickr';
     setBackground();
 })
@@ -131,3 +182,46 @@ defaultButton.addEventListener('click', () => {
     backgroundType = 'default';
     setBackground();
 })
+
+function getFlickrCustomBackground() {
+    const userInput = flickrInput.value;
+    const url =
+        `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=5024ee7beafef05ca48da43511f38a47&tags=${userInput}&extras=url_h&format=json&nojsoncallback=1`;
+    fetch(url)
+        .then(res => {
+            if (res.ok) {
+                res.json()
+                    .then(data => {
+                        const filteredData = data.photos.photo.filter(item => item.hasOwnProperty('url_h'))
+                        console.log(filteredData);
+                        const img = new Image();
+                        img.src = filteredData[getRandomNum(filteredData.length)].url_h;
+                        img.onload = () => {
+                            body.style.backgroundImage = `url(${img.src})`;
+                        }
+                    });
+            }
+        })
+    isCustomBackgroundFlicker = true;
+    backgroundType = 'flickr';
+}
+
+function getUnsplashCustomBackground() {
+    const userInput = unsplashInput.value;
+    const url =
+        `https://api.unsplash.com/photos/random?orientation=landscape&query=${userInput}&client_id=_zCHBz7_qIq_K4W1f_mn9DEIujLxKXejIUlFU7zwFvA`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            const img = new Image();
+            img.src = data.urls.regular;
+            img.onload = () => {
+                body.style.backgroundImage = `url(${img.src})`;
+            }
+        });
+    isCustomBackgroundUnsplash = true;
+    backgroundType = 'unsplash';
+}
+
+flickrInput.addEventListener('change', getFlickrCustomBackground)
+unsplashInput.addEventListener('change', getUnsplashCustomBackground)

@@ -327,6 +327,12 @@ body {
     padding-top: 25px;
 }
 
+.background-apis {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 .languages__description,
 .background-apis__description {
     font-size: 18px;
