@@ -408,6 +408,10 @@ body {
     cursor: pointer;
 }
 
+.summary {
+    font-size: 25px;
+}
+
 /* translation styles ends */
 
 /* media styles starts */
