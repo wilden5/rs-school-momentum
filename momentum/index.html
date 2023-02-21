@@ -33,23 +33,40 @@
 	</div>
 	<details class="settings">
 		<summary>Application settings</summary>
-		<div class="languages u-div">
-			<span class="languages__description">Choose your language: </span>
-			<button class="languages__ru l-button">RU</button>
-			<button class="languages__en l-button">EN</button>
-		</div>
-		<div class="background-apis u-div">
-			<span class="background-apis__description">Choose background API: </span>
-			<div class="uns-div">
-				<button class="background-apis__unsplash a-button">UNSPLASH</button>
-				<input class="unsplash-custom-tag" placeholder="Search by specific tag" type="text">
+		<div class="settings-wrapper">
+			<div class="languages u-div">
+				<span class="languages__description">Choose your language: </span>
+				<button class="languages__ru l-button">RU</button>
+				<button class="languages__en l-button">EN</button>
 			</div>
-			<div class="fli-div">
-				<button class="background-apis__flickr a-button">FLICKR</button>
-				<input class="flickr-custom-tag" placeholder="Search by specific tag" type="text">
+			<div class="background-apis u-div">
+				<span class="background-apis__description">Choose background API: </span>
+				<div class="uns-div">
+					<button class="background-apis__unsplash a-button">UNSPLASH</button>
+					<input class="unsplash-custom-tag" placeholder="Search by specific tag" type="text">
+				</div>
+				<div class="fli-div">
+					<button class="background-apis__flickr a-button">FLICKR</button>
+					<input class="flickr-custom-tag" placeholder="Search by specific tag" type="text">
+				</div>
+				<div>
+					<button class="background-apis__default a-button">GITHUB</button>
+				</div>
 			</div>
-			<div>
-				<button class="background-apis__default a-button">GITHUB</button>
+			<div class="hider">
+				<span class="hider__description">Which elements do you want to hide?</span>
+				<input class="htime" id="hider__time" type="checkbox">
+				<label for="hider__time">TIME</label>
+				<input class="hdate" id="hider__date" type="checkbox">
+				<label for="hider__date">DATE</label>
+				<input class="hgreeting" id="hider__greeting" type="checkbox">
+				<label for="hider__greeting">GREETING</label>
+				<input class="hquote" id="hider__quote" type="checkbox">
+				<label for="hider__quote">QUOTE</label>
+				<input class="hweather" id="hider__weather" type="checkbox">
+				<label for="hider__weather">WEATHER</label>
+				<input class="hplayer" id="hider__player" type="checkbox">
+				<label for="hider__player">PLAYER</label>
 			</div>
 		</div>
 	</details>
@@ -78,8 +95,8 @@
 	</div>
 </main>
 <footer class="footer">
-	<button class="footer__quote-button"></button>
 	<div class="footer__quote-container">
+		<button class="footer__quote-button"></button>
 		<div class="footer__quote"></div>
 		<div class="footer__quote-author"></div>
 	</div>
@@ -91,5 +108,6 @@
 <script src="./js/quote.js"></script>
 <script src="./js/player.js"></script>
 <script src="./js/translation.js"></script>
+<script src="./js/settings.js"></script>
 </body>
 </html>

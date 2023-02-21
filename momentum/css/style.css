@@ -44,17 +44,28 @@ body {
 }
 
 .time {
+    display: flex;
     min-height: 124px;
     margin-bottom: 10px;
     font-family: 'Arial-MT', serif;
     font-size: 100px;
     letter-spacing: -4px;
+    opacity: 1;
+    transition: visibility 2s, opacity 2s linear;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s, opacity 1s linear;
 }
 
 .date {
+    display: flex;
     min-height: 28px;
     font-size: 24px;
     margin-bottom: 20px;
+    transition: visibility 1s, opacity 1s linear;
 }
 
 /* greeting styles starts */
@@ -67,6 +78,7 @@ body {
     min-height: 48px;
     width: 100vw;
     font-size: 40px;
+    transition: visibility 1s, opacity 1s linear;
 }
 
 .greeting__message {
@@ -150,6 +162,8 @@ body {
     width: 180px;
     min-height: 180px;
     text-align: left;
+    transition: visibility 2s, opacity 2s linear;
+
 }
 
 .weather__city-input {
@@ -219,6 +233,7 @@ body {
     justify-content: space-between;
     width: 150px;
     margin-bottom: 10px;
+
 }
 
 .player__play-prev {
@@ -318,19 +333,26 @@ body {
     font-size: 10px;
 }
 
+.player {
+    display: flex;
+    flex-direction: column;
+    transition: visibility 2s, opacity 2s linear;
+}
+
 /* advance player styles ends */
 
 /* translation styles starts */
 
 .languages,
 .u-div {
-    padding-top: 25px;
+    padding-top: 15px;
 }
 
 .background-apis {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    padding-bottom: 15px;
 }
 
 .languages__description,
@@ -348,6 +370,42 @@ body {
     width: 80px;
     cursor: pointer;
     font-weight: 600;
+}
+
+.hider {
+    display: flex;
+    max-width: 500px;
+    flex-wrap: wrap;
+    gap: 5px;
+    font-size: 10px;
+    justify-content: center;
+}
+
+.hider__description {
+    width: 100%;
+    font-size: 18px;
+}
+
+.settings-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label {
+    font-size: 12px;
+}
+
+.footer__quote-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: visibility 2s, opacity 2s linear;
+}
+
+.settings {
+    outline: none;
+    cursor: pointer;
 }
 
 /* translation styles ends */
