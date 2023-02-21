@@ -43,9 +43,9 @@ function setBackground() {
                 if (res.ok) {
                     res.json()
                         .then(data => {
+                            const filteredData = data.photos.photo.filter(item => item.hasOwnProperty('url_h'))
                             const img = new Image();
-                            img.src = data.photos.photo[7].url_h;
-                            console.log(data.photos.photo[7].url_h);
+                            img.src = filteredData[getRandomNum(filteredData.length)].url_h;
                             img.onload = () => {
                                 body.style.backgroundImage = `url(${img.src})`;
                             }
@@ -58,21 +58,61 @@ function setBackground() {
 setBackground();
 
 function getNextSlide() {
-    if (Number(backgroundNum) + 1 > 20) {
-        backgroundNum = '01';
+    if (backgroundType === 'flickr') {
+        const timeOfDay = getTimeOfDay();
+        const url =
+            `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=5024ee7beafef05ca48da43511f38a47&tags=${timeOfDay}&extras=url_h&format=json&nojsoncallback=1`;
+        fetch(url)
+            .then(res => {
+                if (res.ok) {
+                    res.json()
+                        .then(data => {
+                            const filteredData = data.photos.photo.filter(item => item.hasOwnProperty('url_h'))
+                            const img = new Image();
+                            img.src = filteredData[getRandomNum(filteredData.length)].url_h;
+                            img.onload = () => {
+                                body.style.backgroundImage = `url(${img.src})`;
+                            }
+                        });
+                }
+            })
     } else {
-        backgroundNum = String((Number(backgroundNum) + 1)).padStart(2, '0');
+        if (Number(backgroundNum) + 1 > 20) {
+            backgroundNum = '01';
+        } else {
+            backgroundNum = String((Number(backgroundNum) + 1)).padStart(2, '0');
+        }
+        setBackground();
     }
-    setBackground();
 }
 
 function getPreviousSlide() {
-    if (Number(backgroundNum) - 1 === 0) {
-        backgroundNum = '20';
+    if (backgroundType === 'flickr') {
+        const timeOfDay = getTimeOfDay();
+        const url =
+            `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=5024ee7beafef05ca48da43511f38a47&tags=${timeOfDay}&extras=url_h&format=json&nojsoncallback=1`;
+        fetch(url)
+            .then(res => {
+                if (res.ok) {
+                    res.json()
+                        .then(data => {
+                            const filteredData = data.photos.photo.filter(item => item.hasOwnProperty('url_h'))
+                            const img = new Image();
+                            img.src = filteredData[getRandomNum(filteredData.length)].url_h;
+                            img.onload = () => {
+                                body.style.backgroundImage = `url(${img.src})`;
+                            }
+                        });
+                }
+            })
     } else {
-        backgroundNum = String((Number(backgroundNum) - 1)).padStart(2, '0');
+        if (Number(backgroundNum) - 1 === 0) {
+            backgroundNum = '20';
+        } else {
+            backgroundNum = String((Number(backgroundNum) - 1)).padStart(2, '0');
+        }
+        setBackground();
     }
-    setBackground();
 }
 
 sliderPrev.addEventListener('click', getPreviousSlide);
