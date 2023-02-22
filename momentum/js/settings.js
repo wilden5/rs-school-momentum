@@ -23,15 +23,11 @@ function hideElement(listenerElement, elementToHide, localName) {
     })
 }
 
-function getElementsStatusFromStorage(elem, localName) {
+function getElementsStatusFromStorage(checkboxElem, localName, element) {
     if (localStorage.getItem(localName)) {
-        let itemStatus = JSON.parse(localStorage.getItem(localName))
-        elem.checked = itemStatus;
+        checkboxElem.checked = JSON.parse(localStorage.getItem(localName));
     }
-}
-
-function setStatusAsInStorage(checkbox, element) {
-    if (checkbox.checked === true) {
+    if (checkboxElem.checked === true) {
         element.classList.add('hidden');
     }
 }
@@ -44,16 +40,10 @@ hideElement(hideWeatherCheckbox, weatherElem, 'weather');
 hideElement(hidePlayerCheckbox, playerElem, 'player');
 
 window.addEventListener('load', function () {
-    getElementsStatusFromStorage(hideTimeCheckbox, 'time');
-    getElementsStatusFromStorage(hideDateCheckbox, 'date');
-    getElementsStatusFromStorage(hideGreetingCheckbox, 'greeting');
-    getElementsStatusFromStorage(hideQuoteCheckbox, 'quote');
-    getElementsStatusFromStorage(hideWeatherCheckbox, 'weather');
-    getElementsStatusFromStorage(hidePlayerCheckbox, 'player');
-    setStatusAsInStorage(hideTimeCheckbox, timeElem);
-    setStatusAsInStorage(hideDateCheckbox, dateElem);
-    setStatusAsInStorage(hideGreetingCheckbox, greetingElem);
-    setStatusAsInStorage(hideQuoteCheckbox, quoteElem);
-    setStatusAsInStorage(hideWeatherCheckbox, weatherElem);
-    setStatusAsInStorage(hidePlayerCheckbox, playerElem);
+    getElementsStatusFromStorage(hideTimeCheckbox, 'time', timeElem);
+    getElementsStatusFromStorage(hideDateCheckbox, 'date', dateElem);
+    getElementsStatusFromStorage(hideGreetingCheckbox, 'greeting', greetingElem);
+    getElementsStatusFromStorage(hideQuoteCheckbox, 'quote', quoteElem);
+    getElementsStatusFromStorage(hideWeatherCheckbox, 'weather', weatherElem);
+    getElementsStatusFromStorage(hidePlayerCheckbox, 'player', playerElem);
 })
