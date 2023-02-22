@@ -5,50 +5,55 @@ const hideQuoteCheckbox = document.querySelector('.hquote');
 const hideWeatherCheckbox = document.querySelector('.hweather');
 const hidePlayerCheckbox = document.querySelector('.hplayer');
 
-hideTimeCheckbox.addEventListener('change', function () {
-    if (this.checked) {
-        document.querySelector('.time').classList.add('hidden');
-    } else {
-        document.querySelector('.time').classList.remove('hidden');
-    }
-})
+const timeElem = document.querySelector('.time');
+const dateElem = document.querySelector('.date');
+const greetingElem = document.querySelector('.greeting');
+const quoteElem = document.querySelector('.footer__quote-container');
+const weatherElem = document.querySelector('.weather');
+const playerElem = document.querySelector('.player');
 
-hideDateCheckbox.addEventListener('change', function () {
-    if (this.checked) {
-        document.querySelector('.date').classList.add('hidden');
-    } else {
-        document.querySelector('.date').classList.remove('hidden');
-    }
-})
+function hideElement(listenerElement, elementToHide, localName) {
+    listenerElement.addEventListener('change', function () {
+        if (this.checked) {
+            elementToHide.classList.add('hidden');
+        } else {
+            elementToHide.classList.remove('hidden');
+        }
+        localStorage.setItem(localName, listenerElement.checked)
+    })
+}
 
-hideGreetingCheckbox.addEventListener('change', function () {
-    if (this.checked) {
-        document.querySelector('.greeting').classList.add('hidden');
-    } else {
-        document.querySelector('.greeting').classList.remove('hidden');
+function getElementsStatusFromStorage(elem, localName) {
+    if (localStorage.getItem(localName)) {
+        let itemStatus = JSON.parse(localStorage.getItem(localName))
+        elem.checked = itemStatus;
     }
-})
+}
 
-hideQuoteCheckbox.addEventListener('change', function () {
-    if (this.checked) {
-        document.querySelector('.footer__quote-container').classList.add('hidden');
-    } else {
-        document.querySelector('.footer__quote-container').classList.remove('hidden');
+function setStatusAsInStorage(checkbox, element) {
+    if (checkbox.checked === true) {
+        element.classList.add('hidden');
     }
-})
+}
 
-hideWeatherCheckbox.addEventListener('change', function () {
-    if (this.checked) {
-        document.querySelector('.weather').classList.add('hidden');
-    } else {
-        document.querySelector('.weather').classList.remove('hidden');
-    }
-})
+hideElement(hideTimeCheckbox, timeElem, 'time');
+hideElement(hideDateCheckbox, dateElem, 'date');
+hideElement(hideGreetingCheckbox, greetingElem, 'greeting');
+hideElement(hideQuoteCheckbox, quoteElem, 'quote');
+hideElement(hideWeatherCheckbox, weatherElem, 'weather');
+hideElement(hidePlayerCheckbox, playerElem, 'player');
 
-hidePlayerCheckbox.addEventListener('change', function () {
-    if (this.checked) {
-        document.querySelector('.player').classList.add('hidden');
-    } else {
-        document.querySelector('.player').classList.remove('hidden');
-    }
+window.addEventListener('load', function () {
+    getElementsStatusFromStorage(hideTimeCheckbox, 'time');
+    getElementsStatusFromStorage(hideDateCheckbox, 'date');
+    getElementsStatusFromStorage(hideGreetingCheckbox, 'greeting');
+    getElementsStatusFromStorage(hideQuoteCheckbox, 'quote');
+    getElementsStatusFromStorage(hideWeatherCheckbox, 'weather');
+    getElementsStatusFromStorage(hidePlayerCheckbox, 'player');
+    setStatusAsInStorage(hideTimeCheckbox, timeElem);
+    setStatusAsInStorage(hideDateCheckbox, dateElem);
+    setStatusAsInStorage(hideGreetingCheckbox, greetingElem);
+    setStatusAsInStorage(hideQuoteCheckbox, quoteElem);
+    setStatusAsInStorage(hideWeatherCheckbox, weatherElem);
+    setStatusAsInStorage(hidePlayerCheckbox, playerElem);
 })
