@@ -87,6 +87,10 @@ hideElement(hideWeatherCheckbox, weatherElem, 'weather');
 hideElement(hidePlayerCheckbox, playerElem, 'player');
 
 window.addEventListener('load', function () {
+    if (localStorage.getItem('settings') === 'opened') {
+        document.querySelector('.settings').setAttribute('open', '');
+    }
+
     getElementsStatusFromStorage(hideTimeCheckbox, 'time', timeElem);
     getElementsStatusFromStorage(hideDateCheckbox, 'date', dateElem);
     getElementsStatusFromStorage(hideGreetingCheckbox, 'greeting', greetingElem);
@@ -157,3 +161,11 @@ function translateSettings(param) {
     }
     run();
 }
+
+document.querySelector('.summary').addEventListener('click', () => {
+    if (document.querySelector('.settings').hasAttribute("open")) {
+        localStorage.setItem('settings', 'closed')
+    } else {
+        localStorage.setItem('settings', 'opened')
+    }
+})
