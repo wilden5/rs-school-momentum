@@ -24,7 +24,7 @@ function getLocalStorage() {
 window.addEventListener('load', getLocalStorage)
 
 function checkLocalStorage() {
-    return localStorage.length === 0;
+    return localStorage.getItem('person-city') === null;
 }
 
 async function getWeather(city) {
@@ -82,7 +82,6 @@ function run() {
             weatherCityInput.value = 'Минск';
             getWeather(weatherCityInput.value);
         }
-
     } else {
         weatherCityInput.value = localStorage.getItem('person-city');
         getWeather(localStorage.getItem('person-city'));
