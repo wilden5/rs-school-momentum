@@ -12,8 +12,8 @@ let backgroundType = 'default';
 let isCustomBackgroundFlicker = false;
 let isCustomBackgroundUnsplash = false;
 
-let customBackFlic = '';
-let customBackUnspl = '';
+let customBackFlic = localStorage.getItem('randomBackFlickr');
+let customBackUnspl = localStorage.getItem('randomBackUnsplash');
 
 function getRandomNum(max) {
     const number = Math.floor(Math.random() * max);
@@ -187,13 +187,16 @@ defaultButton.addEventListener('click', () => {
     backgroundType = 'default';
     setBackground();
     setBackgroundSource();
+    localStorage.removeItem('randomBackFlickr');
+    localStorage.removeItem('randomBackUnsplash');
 })
 
 function getFlickrCustomBackground() {
     const userInput = flickrInput.value;
     customBackFlic = flickrInput.value;
+    localStorage.setItem('randomBackFlickr', flickrInput.value)
     const url =
-        `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=5024ee7beafef05ca48da43511f38a47&tags=${userInput}&extras=url_h&format=json&nojsoncallback=1`;
+        `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=5024ee7beafef05ca48da43511f38a47&tags=${customBackFlic}&extras=url_h&format=json&nojsoncallback=1`;
     fetch(url)
         .then(res => {
             if (res.ok) {
@@ -216,8 +219,9 @@ function getFlickrCustomBackground() {
 function getUnsplashCustomBackground() {
     const userInput = unsplashInput.value;
     customBackUnspl = unsplashInput.value;
+    localStorage.setItem('randomBackUnsplash', unsplashInput.value)
     const url =
-        `https://api.unsplash.com/photos/random?orientation=landscape&query=${userInput}&client_id=_zCHBz7_qIq_K4W1f_mn9DEIujLxKXejIUlFU7zwFvA`;
+        `https://api.unsplash.com/photos/random?orientation=landscape&query=${customBackUnspl}&client_id=_zCHBz7_qIq_K4W1f_mn9DEIujLxKXejIUlFU7zwFvA`;
     fetch(url)
         .then(res => res.json())
         .then(data => {
@@ -233,9 +237,7 @@ function getUnsplashCustomBackground() {
 
 flickrInput.addEventListener('change', function () {
     getFlickrCustomBackground();
-    localStorage.setItem('user-custom-flickr', customBackFlic);
 })
 unsplashInput.addEventListener('change', function () {
     getUnsplashCustomBackground();
-    localStorage.setItem('user-custom-flickr', customBackUnspl);
 })

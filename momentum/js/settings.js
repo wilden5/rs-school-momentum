@@ -49,14 +49,21 @@ function setBackgroundSource() {
 }
 
 function getBackgroundSource() {
-    if (localStorage.getItem('user-background') === 'unsplash') {
-        backgroundType = 'unsplash';
-    } else if (localStorage.getItem('user-background') === 'flickr') {
-        backgroundType = 'flickr';
+    if (localStorage.getItem('randomBackFlickr')) {
+        getFlickrCustomBackground();
+    } else if (localStorage.getItem('randomBackUnsplash')) {
+        getUnsplashCustomBackground();
     } else {
-        backgroundType = 'default';
+        if (localStorage.getItem('user-background') === 'unsplash') {
+            backgroundType = 'unsplash';
+        } else if (localStorage.getItem('user-background') === 'flickr') {
+            backgroundType = 'flickr';
+        } else {
+            backgroundType = 'default';
+        }
+        setBackground();
     }
-    setBackground();
+
 }
 
 hideElement(hideTimeCheckbox, timeElem, 'time');
@@ -74,6 +81,10 @@ window.addEventListener('load', function () {
     getElementsStatusFromStorage(hideWeatherCheckbox, 'weather', weatherElem);
     getElementsStatusFromStorage(hidePlayerCheckbox, 'player', playerElem);
     getUserLanguage();
+    customBackFlic = localStorage.getItem('randomBackFlickr');
+    document.querySelector('.flickr-custom-tag').value = localStorage.getItem('randomBackFlickr');
+    customBackUnspl = localStorage.getItem('randomBackUnsplash');
+    document.querySelector('.unsplash-custom-tag').value = localStorage.getItem('randomBackUnsplash');
     getBackgroundSource();
 })
 

@@ -442,3 +442,18 @@ body {
 }
 
 /* media styles ends */
+
+.about-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.about-author a {
+    color: white;
+    text-decoration: none;
+}
+
+a, a:visited, a:hover, a:active {
+    color: inherit;
+}
