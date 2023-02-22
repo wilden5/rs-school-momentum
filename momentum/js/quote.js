@@ -51,7 +51,7 @@ function getQuote(lang) {
     }
 }
 
-getQuote('en');
+getQuote(langQuote);
 
 quoteButton.addEventListener('click', () => {
     if (langQuote === 'ru') {

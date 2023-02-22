@@ -12,6 +12,9 @@ let backgroundType = 'default';
 let isCustomBackgroundFlicker = false;
 let isCustomBackgroundUnsplash = false;
 
+let customBackFlic = '';
+let customBackUnspl = '';
+
 function getRandomNum(max) {
     const number = Math.floor(Math.random() * max);
     return number === 0 ? 1 : number;
@@ -170,21 +173,25 @@ sliderNext.addEventListener('click', getNextSlide);
 unsplashButton.addEventListener('click', () => {
     backgroundType = 'unsplash';
     setBackground();
+    setBackgroundSource();
 });
 
 flickrButton.addEventListener('click', () => {
     isCustomBackgroundFlicker = false;
     backgroundType = 'flickr';
     setBackground();
+    setBackgroundSource();
 })
 
 defaultButton.addEventListener('click', () => {
     backgroundType = 'default';
     setBackground();
+    setBackgroundSource();
 })
 
 function getFlickrCustomBackground() {
     const userInput = flickrInput.value;
+    customBackFlic = flickrInput.value;
     const url =
         `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=5024ee7beafef05ca48da43511f38a47&tags=${userInput}&extras=url_h&format=json&nojsoncallback=1`;
     fetch(url)
@@ -208,6 +215,7 @@ function getFlickrCustomBackground() {
 
 function getUnsplashCustomBackground() {
     const userInput = unsplashInput.value;
+    customBackUnspl = unsplashInput.value;
     const url =
         `https://api.unsplash.com/photos/random?orientation=landscape&query=${userInput}&client_id=_zCHBz7_qIq_K4W1f_mn9DEIujLxKXejIUlFU7zwFvA`;
     fetch(url)
@@ -223,5 +231,11 @@ function getUnsplashCustomBackground() {
     backgroundType = 'unsplash';
 }
 
-flickrInput.addEventListener('change', getFlickrCustomBackground)
-unsplashInput.addEventListener('change', getUnsplashCustomBackground)
+flickrInput.addEventListener('change', function () {
+    getFlickrCustomBackground();
+    localStorage.setItem('user-custom-flickr', customBackFlic);
+})
+unsplashInput.addEventListener('change', function () {
+    getUnsplashCustomBackground();
+    localStorage.setItem('user-custom-flickr', customBackUnspl);
+})

@@ -5,5 +5,16 @@ const greetingTranslation = {
     ruEvening: 'вечер',
     ruNight: 'ночи',
     ruPlaceholder: '[Введите имя]',
-    ruLanguageDescription: 'Выберите ваш язык:'
+    ruLanguageDescription: 'Выберите ваш язык:',
+    ruElementsToHide: 'Какие элементы вы хотите скрыть?',
+    ruBackgroundSource: 'Выберите источник картинок:',
+    ruTag: 'Поиск по особому тегу...',
+    ruTime: 'ВРЕМЯ',
+    ruDate: 'ДАТА',
+    ruGreeting: 'ПРИВЕТСТВИЕ',
+    ruQuote: 'ЦИТАТА',
+    ruWeather: 'ПОГОДА',
+    ruPlayer: 'ПЛЕЕР',
+    ruAppSettings: 'Настройки приложения',
 }
+
