@@ -408,6 +408,8 @@ body {
 
 .settings {
     outline: none;
+    min-height: 295px;
+    min-width: 255px;
 }
 
 .summary {
