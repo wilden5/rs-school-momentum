@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0"
+		  name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>Wilden's Momentum</title>
+	<link href="./assets/png/icons8-m-cute-16.png" rel="icon" type="image/x-icon">
+	<link href="./css/owfont-regular.css" rel="stylesheet">
+	<link href="./css/style.css" rel="stylesheet">
+</head>
+<body>
+<header class="header">
+	<div class="player">
+		<div class="player__controls">
+			<button class="player__play-prev player-icon"></button>
+			<button class="player__play player-icon"></button>
+			<button class="player__play-next player-icon"></button>
+			<button class="player__mute-sound player-icon"></button>
+		</div>
+		<div class="player__change-volume">
+			<p class="change-volume__current-volume">Volume: 50</p>
+			<input class="change-volume__slider" max="100" min="0" type="range" value="50">
+		</div>
+		<div class="player__track-details">
+			<span class="player__track-name"></span>
+			<span class="player__track-status"></span>
+		</div>
+		<div class="player__progress-container">
+			<div class="player__progress-bar"></div>
+		</div>
+		<ul class="player__playlist"></ul>
+	</div>
+	<details class="settings">
+		<summary class="summary">Application settings</summary>
+		<div class="settings-wrapper">
+			<div class="languages u-div">
+				<span class="languages__description">Choose your language: </span>
+				<button class="languages__ru l-button">RU</button>
+				<button class="languages__en l-button">EN</button>
+			</div>
+			<div class="background-apis u-div">
+				<span class="background-apis__description">Select background source: </span>
+				<div class="uns-div">
+					<button class="background-apis__unsplash a-button">UNSPLASH</button>
+					<input class="unsplash-custom-tag" placeholder="Search by specific tag..."
+						   title="Enter your specific tag and press the Enter button" type="text">
+				</div>
+				<div class="fli-div">
+					<button class="background-apis__flickr a-button">FLICKR</button>
+					<input class="flickr-custom-tag" placeholder="Search by specific tag..."
+						   title="Enter your specific tag and press the Enter button" type="text">
+				</div>
+				<div>
+					<button class="background-apis__default a-button">GITHUB</button>
+				</div>
+			</div>
+			<div class="hider">
+				<span class="hider__description">Which elements do you want to hide?</span>
+				<input class="htime" id="hider__time" type="checkbox">
+				<label class="label-time" for="hider__time">TIME</label>
+				<input class="hdate" id="hider__date" type="checkbox">
+				<label class="label-date" for="hider__date">DATE</label>
+				<input class="hgreeting" id="hider__greeting" type="checkbox">
+				<label class="label-greeting" for="hider__greeting">GREETING</label>
+				<input class="hquote" id="hider__quote" type="checkbox">
+				<label class="label-quote" for="hider__quote">QUOTE</label>
+				<input class="hweather" id="hider__weather" type="checkbox">
+				<label class="label-weather" for="hider__weather">WEATHER</label>
+				<input class="hplayer" id="hider__player" type="checkbox">
+				<label class="label-player" for="hider__player">PLAYER</label>
+			</div>
+		</div>
+	</details>
+	<div class="weather">
+		<input class="weather__city-input" type="text">
+		<i class="weather__icon owf owf-804"></i>
+		<div class="weather__error"></div>
+		<div class="weather__info-container">
+			<span class="weather__temperature"></span>
+			<span class="weather__description"></span>
+		</div>
+		<div class="weather__wind"></div>
+		<div class="weather__humidity"></div>
+	</div>
+</header>
+<main class="main">
+	<div class="slider">
+		<button class="slider__prev slider__icon"></button>
+		<button class="slider__next slider__icon"></button>
+	</div>
+	<time class="time"></time>
+	<div class="date"></div>
+	<div class="greeting">
+		<span class="greeting__message"></span>
+		<input class="greeting__name" placeholder="[Enter name]" type="text">
+	</div>
+</main>
+<footer class="footer">
+	<div class="footer__quote-container">
+		<button class="footer__quote-button"></button>
+		<div class="footer__quote"></div>
+		<div class="footer__quote-author"></div>
+	</div>
+	<div class="about-author">
+		<span><a href="https://github.com/wilden5" target="_blank">Wilden5</a></span>
+		<span>2023</span>
+		<a href="https://rs.school/js/" target="_blank"><img alt="rs-school" class="rs" height="50"
+															 src="https://rs.school/images/rs_school_js.svg" width="50"></a>
+	</div>
+</footer>
+<script src="./js/date.js"></script>
+<script src="./js/greeting.js"></script>
+<script src="./js/slider.js"></script>
+<script src="./js/weather.js"></script>
+<script src="./js/quote.js"></script>
+<script src="./js/player.js"></script>
+<script src="./js/translation.js"></script>
+<script src="./js/settings.js"></script>
+</body>
+</html>
